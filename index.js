@@ -1,10 +1,18 @@
 import Express from "express";
 import Products from "./products.js" 
+import Time from "./time.js"
 
 const app = Express();
 const port = 3000;
 app.use(Express.json());
 app.use(Express.urlencoded({extended: true}))
+
+app.get("/time/:id", (req, res) => {
+    console
+    res.json(Time.find((time) => {
+        return +req.params.id === time.id
+    }))
+})
 
 app.get("/products/:id", (req, res) => {
     console
